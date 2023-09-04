@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+        .container {
+            margin: 0 auto;
+            text-align: center;
+            max-width: 600px;
+            padding: 100px;
+            height: 300px;
+        }
+        .spacer{
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="{{ url_for('index') }}"><img src="static/images/icon.jpg" alt="logo" class="logo"></a>
+        <nav class="navigation">
+            <ul>
+                <li class="home-button"><a href="{{ url_for('index') }}"><button class="home-button">Home</button></a></li>
+                <li class="assessment-button"><a href="/calculator"><button class="assessment-button">Assessment</button></a></li>
+                <li class="learnmore-button"><a href="/data"><button class="learnmore-button">Learn more</button></a></li>
+                <li class="about-button"><a href="{{ url_for('about') }}"><button class="about-button">About</button></a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <p class="spacer"> </p>
+    <section class="container">
+        <h2>About Us</h2>
+        <p>Welcome to MindfulTrek, where we are dedicated to promoting mental health and well-being. Our mission is to provide valuable resources, information, and support to individuals and communities striving for a better mental state.</p>
+        <p>In the further development we will provide suggestions about camping and hiking as a solution to mental problem.</p>
+         <p>&copy; 2023 MindfulTrek. All rights reserved.</p>
+    </section>
+
+
+</body>
+</html>

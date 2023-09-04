@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to MindfulTreks</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        /* Style for whole page */
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: system-ui;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Style for calculater */
+        .container-withimage {
+          width: 1000px; /* Set your desired width */
+          height: 300px; /* Set your desired height */
+          margin: 0 auto; /* Center the container horizontally */
+          background-color: #0AA076; /* Optional background color */
+            border-radius: 30px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center vertically */
+            padding: 10px; /* Add padding for spacing */
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.5);
+        }
+        .container-site-text {
+            width: 100%; /* Full width */
+            height: auto; /* Adjust height based on content */
+            color: #0C1924;
+            padding: 10px; /* Add padding for spacing */
+            text-align: left; /* Center align content */
+        }
+
+        /* Title Styles */
+        .title {
+            font-size: 24px; /* Larger font size for the title */
+            font-weight: bold; /* Bold font weight for emphasis */
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 10px;
+            font-size: 22px; /* Font size for the content */
+            margin-top: 15px; /* Add some space between title and content */
+            font-family: system-ui;
+
+        }
+
+        /* Style for the buttons */
+        .start-button {
+            background-color: #F29E55;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 25px;
+        }
+
+        .Learn_more-button-bottom {
+            background-color: #23211E;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 25px;
+        }
+        .assessment-button{
+            background-color: #2d8e87;
+            border: none;
+            color: white;
+             padding: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+        }
+        .home-button{
+            background-color: #2d8e87;
+            border: none;
+            color: white;
+             padding: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+        }
+        .about-button{
+            background-color: #2d8e87;
+            border: none;
+            color: white;
+             padding: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+        }
+
+        .learnmore-button{
+            background-color: #2d8e87;
+            border: none;
+            color: white;
+             padding: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+        }
+
+        /* Style for the site header */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            z-index: 700;
+            overflow: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* spacer for site header */
+        .spacer {
+            height: 30px;
+        }
+        .container {
+            width: 1000px; /* Set your desired width */
+            height: 300px; /* Set your desired height */
+            margin: 0 auto; /* Center the container horizontally */
+            background-color: #8E1C3B; /* Optional background color */
+            border-radius: 30px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center vertically */
+            padding: 10px; /* Add padding for spacing */
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .container_middle {
+            width: 1000px; /* Set your desired width */
+            height: 300px; /* Set your desired height */
+            margin: 0 auto; /* Center the container horizontally */
+            background-color:  #FEBC38; /* Optional background color */
+            border-radius: 30px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center vertically */
+            padding: 10px; /* Add padding for spacing */
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .bottom-container {
+            background-color: #152329;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            height: 100px;
+        }
+
+        .navigation ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+         .navigation ul li.home-button {
+            margin-right: 1rem;
+        }
+
+        .navigation ul li.about-button {
+            margin-right: 1rem;
+        }
+
+        .navigation ul li.assessment-button {
+            margin-right: 1rem;
+        }
+
+        .navigation ul li.learnmore-button {
+            margin-right: 1rem;
+        }
+        .navigation ul li:last-child {
+            margin-right: 2cm;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+        iframe {
+      border: none;
+      width: 100vw;
+      height: 100vh;
+        }
+        .icon    {
+            width: 120px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .foot-container {
+            margin: 0 auto;
+            text-align: center;
+        }
+       .logo {
+      width: 60px;
+      height: 50px;
+    }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="{{ url_for('index') }}"><img src="static/images/icon.jpg" alt="logo" class="logo"></a>
+        <nav class="navigation">
+            <ul>
+                <li class="home-button"><a href="{{ url_for('index') }}"><button class="home-button">Home</button></a></li>
+                <li class="assessment-button"><a href="/calculator"><button class="assessment-button">Assessment</button></a></li>
+                <li class="learnmore-button"><a href="/data"><button class="learnmore-button">Learn more</button></a></li>
+                <li class="about-button"><a href="{{ url_for('about') }}"><button class="about-button">About</button></a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <p class="spacer"> </p>
+    <iframe src="{{ url_for('static', filename='templet.html') }}"></iframe>
+
+    <div class = "container">
+        <img src="static/images/busy life.png" alt="Icon" class="icon">
+        <div class = "container-site-text">
+            <div class="title">Having a busy life?</div>
+        <div class="content">
+            Prioritising both our physical and mental well-being is absolutely crucial for our overall vitality and quality of life.
+         </div>
+    </div>
+    </div>
+    <p class="spacer"> </p>
+    <div class = "container_middle">
+        <img src="static/images/stress.jpg" alt="Icon" class="icon">
+        <div class = "container-site-text">
+            <div class="title">The Disconnection</div>
+        <div class="content">
+            Unfortunately, the growing disconnect between communities and the natural world is becoming more pronounced,
+            leading to significant well-being consequences that have been further exacerbated by past periods of lockdown.
+         </div>
+            <a href="/data" class="Learn_more-button-bottom">Learn More</a>
+
+    </div>
+    </div>
+    <p class="spacer"> </p>
+    <div class="container-withimage">
+         <img src="static/images/assessment.jpg" alt="Icon" class="icon">
+        <div class="container-site-text">
+            <div class="title">Try this simple test to find out your stress level</div>
+            <div class="content">This stress assessment employs the Perceived Stress Scale(PSS), a psychological instrument acknowledged for evaluating stress perception.
+            Use this assessment to find out your stress level based on your responses to the provided questions.
+            </div>
+            <a href="/calculator" class="start-button">Start the Assessment</a>
+        </div>
+    </div>
+    <p class="spacer"> </p>
+    <div class="bottom-container">
+        <img src="static/images/icon.jpg" alt="Icon" class="icon">
+        <div class="foot-container">
+        <p>Explore more <a href="https://www.health.vic.gov.au/your-health-report-of-the-chief-health-officer-victoria-2018/mental-health/mental-illness-and" target="_blank">here</a> on mental illness and mental health.</p>
+        <p>&copy; 2023 MindfulTrek. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

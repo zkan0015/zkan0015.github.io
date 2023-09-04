@@ -1,0 +1,367 @@
+ :root {
+  --transition: 1s;
+}
+
+body{
+    /* background-image: url('/static/images/Icemountain.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+    height: 100%;
+    width: 100%;
+}
+
+#caro_con {
+  width: 0;
+  height: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transition: var(--transition) ease-in;
+  transform: rotate(0deg);
+}
+
+.caro_slide {
+  width: min(100vw,100vh);
+  height: 100vh;
+  /*   aspect-ratio: 1 / 1; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform-origin: 0% 100%;
+  display: grid;
+  place-items: center;
+  /*   border-radius: 0 100% 0 0; */
+  /*   border: 2px solid red; */
+  box-sizing: border-box;
+}
+.caro_slide:nth-child(1) {
+  transform: rotate(0deg);
+}
+.caro_slide:nth-child(2) {
+  transform: rotate(90deg);
+}
+.caro_slide:nth-child(3) {
+  transform: rotate(180deg);
+}
+.caro_slide:nth-child(4) {
+  transform: rotate(270deg);
+}
+.caro_slide:nth-child(5) {
+  display: none;
+  transform: rotate(0deg);
+}
+.caro_slide:nth-child(6) {
+  display: none;
+  transform: rotate(90deg);
+}
+.caro_slide:nth-child(7) {
+  display: none;
+  transform: rotate(180deg);
+}
+.caro_slide:nth-child(8) {
+  display: none;
+  transform: rotate(270deg);
+}
+.caro_slide:nth-child(9) {
+  display: none;
+  transform: rotate(0deg);
+}
+.caro_slide:nth-child(10) {
+  display: none;
+  transform: rotate(90deg);
+}
+.caro_slide:nth-child(11) {
+  display: none;
+  transform: rotate(180deg);
+}
+.caro_slide:nth-child(12) {
+  display: none;
+  transform: rotate(270deg);
+}
+.caro_slide:nth-child(13) {
+  display: none;
+  transform: rotate(0deg);
+}
+.caro_slide:nth-child(14) {
+  display: none;
+  transform: rotate(90deg);
+}
+
+.caro_slide div {
+  max-width: 60ch;
+/*   columns: 2; */
+/*   column-gap: 2rem; */
+  font-size: 1.2rem;
+  margin-left: 10%;
+
+  background: #6d0326;
+  color: #222;
+  padding: 0 3rem 0.5rem 3rem;
+  box-sizing: border-box;
+  border-radius: .5rem;
+  box-shadow: 0 10px 30px black;
+}
+
+.caro_slide:nth-child(1) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(2) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(3) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(4) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(5) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(6) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(7) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(8) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(9) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(10) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(11) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(12) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(13) div {
+  background-color: #F5A027;
+}
+.caro_slide:nth-child(14) div {
+  background-color: #F5A027;
+}
+
+.caro_slide p {
+  font-weight: 900;
+  margin-top: 0;
+}
+
+h1 {
+  column-span: all;
+}
+
+#btn_box {
+  bottom: 8%; /* 调整按钮与底部的距离 */
+  left: 6ch; /* 水平居中 */
+  transform: translateX(-20%); /* 将按钮水平居中 */
+  position: fixed;
+  /* bottom: 10%;
+  left: 25%; */
+  font-size: 35px;
+  /* padding: 8%; */
+}
+
+.btn_left{
+  background-color: #8a8787;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  font-size: 35px;
+}
+.btn_right{
+  background-color: #8a8787;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 35px;
+}
+
+.reference-container {
+  position: absolute;
+  bottom: 35px;
+  color: rgb(145, 70, 70);
+  padding: 10px;
+  text-align: center;
+}
+
+.reference-container h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.reference-container p {
+  font-size: 14px;
+  color: rgb(145, 70, 70);
+}
+
+#error-message{
+  color: rgb(12, 10, 8);
+  font-size: 20px;
+  margin-top: 10px;
+}
+.button{
+  /* position: fixed;
+  margin-left: 50%;
+  margin-top: 30%;
+  place-items:inherit; */
+  position: absolute;
+  bottom: 8%; /* 调整按钮与底部的距离 */
+  left: 60ch; /* 水平居中 */
+  transform: translateX(-50%); /* 将按钮水平居中 */
+  /* display: none; */
+}
+.right{
+  padding-left: 60%;
+  padding-top: 10%;
+  color: white;
+}
+
+.submit-button{
+   background-color: #8a8787;
+   color: white;
+   padding: 10px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 23px;
+}
+
+.skip-button{
+  background-color: #8a8787;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    z-index: 700;
+    overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.mindfultrek-text {
+    text-align: Left;
+    font-size: 20px;
+    color: yellowgreen;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    padding: 10px;
+}
+
+.logo {
+      width: 60px;
+      height: 50px;
+    }
+.navigation {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+.navigation ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+}
+         .navigation ul li.home-button {
+            margin-right: 1rem;
+        }
+
+        .navigation ul li.about-button {
+            margin-right: 1rem;
+        }
+
+        .navigation ul li.assessment-button {
+            margin-right: 1rem;
+        }
+
+        .navigation ul li.learnmore-button {
+            margin-right: 1rem;
+        }
+        .navigation ul li:last-child {
+            margin-right: 2cm;
+        }
+ .assessment-button{
+            background-color: #2d8e87;
+            border: none;
+            color: white;
+             padding: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+        }
+        .home-button{
+            background-color: #2d8e87;
+            border: none;
+            color: white;
+             padding: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+        }
+.about-button{
+    background-color: #2d8e87;
+    border: none;
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.learnmore-button{
+    background-color: #2d8e87;
+    border: none;
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.spacer {
+    height: 30px;
+}
+.charts-container {
+    display: flex;
+}
+/* Style for the Plotly chart */
+.plotly-chart {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+.banner-container {
+    position: relative;
+    text-align: center;
+} 

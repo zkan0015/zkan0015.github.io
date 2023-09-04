@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mental Health Statistics</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+        /* Add styles for improved layout and readability */
+        .charts-container {
+            display: flex;
+            justify-content:space-around;
+            flex-wrap: wrap;
+        }
+        .head-container{
+            width: 1000px;
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 22px;
+        }
+        .head-container1{
+            margin: 0 auto;
+            text-align: center;
+            font-size: 18px;
+        }
+        .container {
+            max-width: 600px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .container h3{
+            font-size: 10px;
+        }
+
+
+        /* Add responsive styles here if needed */
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="{{ url_for('index') }}"><img src="static/images/icon.jpg" alt="logo" class="logo"></a>
+        <nav class="navigation">
+            <ul>
+                <li class="home-button"><a href="{{ url_for('index') }}"><button class="home-button">Home</button></a></li>
+                <li class="assessment-button"><a href="/calculator"><button class="assessment-button">Assessment</button></a></li>
+                <li class="learnmore-button"><a href="/data"><button class="learnmore-button">Learn more</button></a></li>
+                <li class="about-button"><a href="{{ url_for('about') }}"><button class="about-button">About</button></a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <p class="spacer"> </p>
+    <div class="head-container">
+        <h1>Learn More about Mental Health</h1>
+            <p>In 2017-18, one in five people had a mental or behavioral condition in Victoria, mostly due to an increase in those with an anxiety-related condition from 11.1% in 2014-15 to 13.3% in 2017-18.</p>
+    </div>
+    <p class="spacer"> </p>
+    <div class="charts-container">
+        <div class="container">
+            <h2>Proportion of people with <span style="color: red;">anxiety-related</span> conditions, 2014-2015 and 2017-2018</h2>
+            <div id="anxiety-plot" class="plotly-chart"></div>
+            <h3>Data source: <a href="https://www.abs.gov.au/statistics/health/mental-health/mental-health/2017-18" target="_blank">Australian Bureau of Statistics</a></h3>
+            <p>In 2017-18, 3.2 million Australians (13.1%) had an anxiety-related condition. This was an increase from 2014-15 when 2.6 million people (or 11.2%) had such a condition. Females had an anxiety-related condition at one and a half times the rate of males (15.7% compared with 10.6%).</p>
+        </div>
+
+        <div class="container">
+            <h2>Proportion of people with feelings of <span style="color: blue;">depression</span>, 2014-2015 and 2017-2018</h2>
+            <div id="depression-plot" class="plotly-chart"></div>
+            <h3>Data source: <a href="https://www.abs.gov.au/statistics/health/mental-health/mental-health/2017-18" target="_blank">Australian Bureau of Statistics</a></h3>
+            <p>Just over one in ten people (10.4%) had depression or feelings of depression in 2017-18, compared with 8.9% in 2014-15. While overall, females had depression or feelings of depression at a higher rate than males (11.6% compared with 9.1% respectively), the increase between 2014-15 and 2017-18 was especially evident amongst males aged 15-54 years.</p>
+        </div>
+    </div>
+    <p class="spacer"> </p>
+    <div class="head-container1">
+    <h2 > Mental Health Statistics</h2>
+    </div>
+     <div class="charts-container">
+         <div id="gauge-chart1" class="plotly-chart"></div>
+         <div id="gauge-chart2" class="plotly-chart"></div>
+     </div>
+
+    <script>
+    fetch('/get_anxiety_data')
+    .then(response => response.json())
+    .then(data => {
+        Plotly.newPlot('anxiety-plot', data.data, data.layout);
+    });
+
+    fetch('/get_depression_data')
+    .then(response => response.json())
+    .then(data => {
+        Plotly.newPlot('depression-plot', data.data, data.layout);
+    });
+
+    fetch('/get_mental_health_stats')
+    .then(response => response.json())
+    .then(data => {
+    Plotly.newPlot('gauge-chart1', [data.gauge1.data[0]], data.gauge1.layout, {displayModeBar: false});
+    Plotly.newPlot('gauge-chart2', [data.gauge2.data[0]], data.gauge2.layout, {displayModeBar: false});
+    Plotly.newPlot('gauge-chart3', [data.gauge3.data[0]], data.gauge3.layout, {displayModeBar: false});
+    });
+
+    </script>
+</body>
+</html>

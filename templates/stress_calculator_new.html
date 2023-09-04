@@ -1,0 +1,744 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Stress Assessment</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+
+  <style>
+    .progress {
+      width: 40%;
+      height: 20px;
+    }
+
+    .progress-wrap {
+      background: yellowgreen;
+      margin: 10% 55%;
+      overflow: hidden;
+      position: relative;
+      border-radius: 20px;
+    }
+
+    .progress-bar {
+      background: #ddd;
+      left: 0;
+      position: absolute;
+      top: 0;
+      border-radius: 20px;
+    }
+
+    .all {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .process1 {
+      /* padding: 3px; */
+      float: right;
+      padding-right: 12px;
+      /* padding-right: 50%; */
+    }
+
+    html {
+      font-family: system-ui;
+      overflow: hidden;
+    }
+
+    body {
+      /* background-image: url('/static/images/Icemountain.jpg'); */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      height: 100%;
+      width: 100%;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #000000;
+      z-index: 700;
+      overflow: auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for the button */
+    .start-button {
+      background-color: #2d8e87;
+      border: none;
+      color: white;
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 20px;
+    }
+
+    .home-button {
+      background-color: #2d8e87;
+      border: none;
+      color: white;
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 20px;
+    }
+
+    .back-button {
+      background-color: #2d8e87;
+      border: none;
+      color: rgb(8, 3, 3);
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 20px;
+    }
+
+    .navigation ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .navigation ul li.home-button {
+      margin-right: 1rem;
+    }
+
+    .navigation ul li.about-button {
+      margin-right: 1rem;
+    }
+
+    .navigation ul li.assessment-button {
+      margin-right: 1rem;
+    }
+    .responseContainer{
+        height: 100%;
+    }
+    .navigation ul li:last-child {
+      margin-right: 2cm;
+    }
+
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+
+    .assessment-button {
+      background-color: #2d8e87;
+      border: none;
+      color: white;
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 20px;
+    }
+
+    .about-button {
+      background-color: #2d8e87;
+      border: none;
+      color: white;
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 20px;
+    }
+
+    .learnmore-button {
+      background-color: #2d8e87;
+      border: none;
+      color: white;
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 20px;
+    }
+
+    .bottom-container {
+      background-color: #152329;
+      display: flex;
+      position: absolute;
+      justify-content: space-between;
+      color: white;
+      height: 50px;
+      width: 100%;
+      bottom: 0;
+      left:0;
+    }
+
+    .icon {
+      width: 150px;
+      height: 125px;
+      margin-right: 20px;
+    }
+
+    .foot-container {
+      margin: 0 auto;
+      text-align: center;
+      /* padding: 100px; */
+      color: white;
+      font-size: 10px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 50px;
+    }
+
+    .number {
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="{{ url_for('index') }}"><img src="static/images/icon.jpg" alt="logo" class="logo"></a>
+    <nav class="navigation">
+      <ul>
+        <li class="home-button"><a href="{{ url_for('index') }}"><button class="home-button">Home</button></a></li>
+        <li class="assessment-button"><a href="/calculator"><button class="assessment-button">Assessment</button></a>
+        </li>
+        <li class="learnmore-button"><a href="/data"><button class="learnmore-button">Learn more</button></a></li>
+        <li class="about-button"><a href="{{ url_for('about') }}"><button class="about-button">About</button></a></li>
+
+      </ul>
+    </nav>
+  </header>
+  <!-- {#process bar#} -->
+  <div id="all">
+    <div id="process1" class="process1">0%</div>
+    <div class="progress-wrap progress" data-progress-percent="0" id="progress">
+      <div class="progress-bar progress">
+      </div>
+    </div>
+  </div>
+
+  <div id="responseContainer"></div>
+  <div id="main">
+    <div class="right">
+      <h1>Perceived Stress Scale(PSS) Calculator</h1>
+      <p>This stress assessment employs the Perceived Stress Scale (PSS), initially developed by Cohen et al. in 1983.
+        This assessment is extensively acknowledged for evaluating the perception of stress and holds clinical
+        validation.
+        It is widely adopted by esteemed medical institutions like the NHS and other reputable healthcare services.</p>
+    </div>
+    <!-- partial:index.partial.html -->
+    <!-- Move carousel with mousewheel, left/right arrow keys, or buttons at bottom -->
+    <div id='caro_con'>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q1 </h1>
+          <p>In the last month, how often have you been upset because of something that happened unexpectedly?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test1" value="0" />
+              <label for="test1" onclick="selectRadio('test1')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test2" value="1" />
+              <label for="test2" onclick="selectRadio('test2')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test3" value="2" />
+              <label for="test3" onclick="selectRadio('test3')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test4" value="3" />
+              <label for="test4" onclick="selectRadio('test4')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test5" value="4" />
+              <label for="test5" onclick="selectRadio('test5')">Very Often</label>
+            </p>
+          </form>
+          <p class="number">1-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q2 </h1>
+          <p>In the last month, how often have you felt difficulties were piling up so high that you could not overcome
+            them?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group2" type="radio" id="test6" value="0" />
+              <label for="test6" onclick="selectRadio('test6')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group2" type="radio" id="test7" value="1" />
+              <label for="test7" onclick="selectRadio('test7')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group2" type="radio" id="test8" value="2" />
+              <label for="test8" onclick="selectRadio('test8')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group2" type="radio" id="test9" value="3" />
+              <label for="test9" onclick="selectRadio('test9')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group2" type="radio" id="test10" value="4" />
+              <label for="test10" onclick="selectRadio('test10')">Very Often</label>
+            </p>
+
+
+          </form>
+          <p class="number">2-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q3 </h1>
+          <p>last month, how often have you been able to control the way you spend your time?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group3" type="radio" id="test11" value="0" />
+              <label for="test11" onclick="selectRadio('test11')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group3" type="radio" id="test12" value="1" />
+              <label for="test12" onclick="selectRadio('test12')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group3" type="radio" id="test13" value="2" />
+              <label for="test13" onclick="selectRadio('test13')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group3" type="radio" id="test14" value="3" />
+              <label for="test14" onclick="selectRadio('test14')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group3" type="radio" id="test15" value="4" />
+              <label for="test15" onclick="selectRadio('test15')">Very Often</label>
+            </p>
+          </form>
+          <p class="number">3-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q4 </h1>
+          <p>In the last month, how often have you found yourself thinking about things that you have to accomplish?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group4" type="radio" id="test16" value="0" />
+              <label for="test16" onclick="selectRadio('test16')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group4" type="radio" id="test17" value="1" />
+              <label for="test17" onclick="selectRadio('test17')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group4" type="radio" id="test18" value="2" />
+              <label for="test18" onclick="selectRadio('test18')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group4" type="radio" id="test19" value="3" />
+              <label for="test19" onclick="selectRadio('test19')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group4" type="radio" id="test20" value="4" />
+              <label for="test20" onclick="selectRadio('test20')">Very Often</label>
+            </p>
+          </form>
+
+          <p class="number">4-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q5 </h1>
+          <p>In the last month, how often have you been angered because of things that happened that were outside of
+            your
+            control?
+          </p>
+          <!-- 从test21开始 -->
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group5" type="radio" id="test21" value="0" />
+              <label for="test21" onclick="selectRadio('test21')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group5" type="radio" id="test22" value="1" />
+              <label for="test22" onclick="selectRadio('test22')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group5" type="radio" id="test23" value="2" />
+              <label for="test23" onclick="selectRadio('test23')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group5" type="radio" id="test24" value="3" />
+              <label for="test24" onclick="selectRadio('test24')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group5" type="radio" id="test25" value="4" />
+              <label for="test25" onclick="selectRadio('test25')">Very Often</label>
+            </p>
+          </form>
+
+          <p class="number">5-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q6 </h1>
+          <p>In the last month, how often have you felt that you were on top of things?
+          </p>
+          <!-- 从test26开始 -->
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group6" type="radio" id="test26" value="0" />
+              <label for="test26" onclick="selectRadio('test26')">Never</label>
+            </p>
+            <p>
+              <input class=" with-gap" name="group6" type="radio" id="test27" value="1" />
+              <label for="test27" onclick="selectRadio('test27')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group6" type="radio" id="test28" value="2" />
+              <label for="test28" onclick="selectRadio('test28')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group6" type="radio" id="test29" value="3" />
+              <label for="test29" onclick="selectRadio('test29')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group6" type="radio" id="test30" value="4" />
+              <label for="test30" onclick="selectRadio('test30')">Very Often</label>
+            </p>
+          </form>
+
+          <p class="number">6-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q7 </h1>
+          <p>In the last month, how often have you been able to control irritations in your life?
+          </p>
+          <!-- 从test31开始 -->
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group7" type="radio" id="test31" value="0" />
+              <label for="test31" onclick="selectRadio('test31')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group7" type="radio" id="test32" value="1" />
+              <label for="test32" onclick="selectRadio('test32')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group7" type="radio" id="test33" value="2" />
+              <label for="test33" onclick="selectRadio('test33')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group7" type="radio" id="test34" value="3" />
+              <label for="test34" onclick="selectRadio('test34')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group7" type="radio" id="test35" value="4" />
+              <label for="test35" onclick="selectRadio('test35')">Very Often</label>
+            </p>
+          </form>
+
+          <p class="number">7-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q8 </h1>
+          <p>In the last month, how often have you found that you could not cope with all the things that you had to do?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group8" type="radio" id="test36" value="0" />
+              <label for="test36" onclick="selectRadio('test36')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group8" type="radio" id="test37" value="1" />
+              <label for="test37" onclick="selectRadio('test37')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group8" type="radio" id="test38" value="2" />
+              <label for="test38" onclick="selectRadio('test38')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group8" type="radio" id="test39" value="3" />
+              <label for="test39" onclick="selectRadio('test39')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group8" type="radio" id="test40" value="4" />
+              <label for="test40" onclick="selectRadio('test40')">Very Often</label>
+            </p>
+          </form>
+
+          <!-- 继续添加其他问题的代码 -->
+
+          <p class="number">8-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q9 </h1>
+          <p>In the last month, how often have you felt that things were going your way?
+          </p>
+          <!-- 从test41开始 -->
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group9" type="radio" id="test41" value="0" />
+              <label for="test41" onclick="selectRadio('test41')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group9" type="radio" id="test42" value="1" />
+              <label for="test42" onclick="selectRadio('test42')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group9" type="radio" id="test43" value="2" />
+              <label for="test43" onclick="selectRadio('test43')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group9" type="radio" id="test44" value="3" />
+              <label for="test44" onclick="selectRadio('test44')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group9" type="radio" id="test45" value="4" />
+              <label for="test45" onclick="selectRadio('test45')">Very Often</label>
+            </p>
+          </form>
+
+          <!-- 继续添加其他问题的代码 -->
+
+          <p class="number">9-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q10 </h1>
+          <p>In the last month, how often have you felt confident about your ability to handle your personal problems?
+          </p>
+          <!-- 从test46开始 -->
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group10" type="radio" id="test46" value="0" />
+              <label for="test46" onclick="selectRadio('test46')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group10" type="radio" id="test47" value="1" />
+              <label for="test47" onclick="selectRadio('test47')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group10" type="radio" id="test48" value="2" />
+              <label for="test48" onclick="selectRadio('test48')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group10" type="radio" id="test49" value="3" />
+              <label for="test49" onclick="selectRadio('test49')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group10" type="radio" id="test50" value="4" />
+              <label for="test50" onclick="selectRadio('test50')">Very Often</label>
+            </p>
+          </form>
+
+          <!-- 继续添加其他问题的代码 -->
+
+          <p class="number">10-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q11 </h1>
+          <p>In the last month, how often have you felt that you were effectively coping with important changes that
+            were
+            occurring in your life?
+          </p>
+          <!-- 从test51开始 -->
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group11" type="radio" id="test51" value="0" />
+              <label for="test51" onclick="selectRadio('test51')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group11" type="radio" id="test52" value="1" />
+              <label for="test52" onclick="selectRadio('test52')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group11" type="radio" id="test53" value="2" />
+              <label for="test53" onclick="selectRadio('test53')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group11" type="radio" id="test54" value="3" />
+              <label for="test54" onclick="selectRadio('test54')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group11" type="radio" id="test55" value="4" />
+              <label for="test55" onclick="selectRadio('test55')">Very Often</label>
+            </p>
+          </form>
+
+
+          <p class="number">11-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q12 </h1>
+          <p>In the last month, how often have you dealt successfully with irritating life hassles?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group12" type="radio" id="test56" value="0" />
+              <label for="test56" onclick="selectRadio('test56')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group12" type="radio" id="test57" value="1" />
+              <label for="test57" onclick="selectRadio('test57')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group12" type="radio" id="test58" value="2" />
+              <label for="test58" onclick="selectRadio('test58')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group12" type="radio" id="test59" value="3" />
+              <label for="test59" onclick="selectRadio('test59')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group12" type="radio" id="test60" value="4" />
+              <label for="test60" onclick="selectRadio('test60')">Very Often</label>
+            </p>
+          </form>
+          <p class="number">12-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q13 </h1>
+          <p>In the last month, how often have you felt nervous and 'stressed'?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group13" type="radio" id="test61" value="0" />
+              <label for="test61" onclick="selectRadio('test61')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group13" type="radio" id="test62" value="1" />
+              <label for="test62" onclick="selectRadio('test62')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group13" type="radio" id="test63" value="2" />
+              <label for="test63" onclick="selectRadio('test63')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group13" type="radio" id="test64" value="3" />
+              <label for="test64" onclick="selectRadio('test64')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group13" type="radio" id="test65" value="4" />
+              <label for="test65" onclick="selectRadio('test65')">Very Often</label>
+            </p>
+          </form>
+
+          <p class="number">13-14</p>
+        </div>
+      </div>
+      <div class='caro_slide'>
+        <div>
+          <h1> Q14 </h1>
+          <p>In the last month, how often have you felt that you were unable to control the important things in your
+            life?
+          </p>
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group14" type="radio" id="test66" value="0" />
+              <label for="test66" onclick="selectRadio('test66')">Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group14" type="radio" id="test67" value="1" />
+              <label for="test67" onclick="selectRadio('test67')">Almost Never</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group14" type="radio" id="test68" value="2" />
+              <label for="test68" onclick="selectRadio('test68')">Sometimes</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group14" type="radio" id="test69" value="3" />
+              <label for="test69" onclick="selectRadio('test69')">Fairly Often</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group14" type="radio" id="test70" value="4" />
+              <label for="test70" onclick="selectRadio('test70')">Very Often</label>
+            </p>
+          </form>
+
+          <p class="number">14-14</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="button" id="button">
+      <div id="error-message"></div>
+      <button class="skip-button">
+        Skip
+      </button>
+      <button class="submit-button">
+        Submit
+      </button>
+    </div>
+
+
+    <div id='btn_box'>
+      <button class='btn_left'>
+        < </button>
+          <button class='btn_right'>></button>
+    </div>
+  </div>
+
+  <div class="bottom-container">
+    <div class="foot-container">
+      <h3>Reference:</h3>
+      <p style="word-wrap: break-word;text-align: center;">Cohen, S., Kamarck, T., & Mermelstein, R. (1983). A Global
+        Measure of Perceived Stress. Journal of Health and
+        Social Behavior, 24(4), 385–396. https://doi.org/10.2307/2136404</p>
+    </div>
+  </div>
+
+
+
+
+  <!-- partial -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{{url_for('static', filename='js/showTip.js')}}"></script>
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
+  <script src="{{url_for('static', filename='js/moveBar.js')}}"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+Flask
+plotly
+pyodbc
+numpy
+Flask-SQLAlchemy
+urllib3
+SQLAlchemy
+pandas
+configparser

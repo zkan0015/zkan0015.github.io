@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PSS Calculator</title>
+</head>
+<body>
+    <h1>Perceived Stress Scale(PSS) Calculator</h1>
+    <p>This stress assessment employs the Perceived Stress Scale (PSS), initially developed by Cohen et al. in 1983.
+        This assessment is extensively acknowledged for evaluating the perception of stress and holds clinical validation.
+        It is widely adopted by esteemed medical institutions like the NHS and other reputable healthcare services.</p>
+    <form method="POST">
+        {% for i in range(num_questions) %}
+            <p>{{ i + 1 }}. {{ questions[i] }}</p>
+            <select name="question_{{ i }}">
+                <option value="0">Never</option>
+                <option value="1">Almost Never</option>
+                <option value="2">Sometimes</option>
+                <option value="3">Fairly Often</option>
+                <option value="4">Very Often</option>
+            </select><br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Calculate">
+    </form>
+
+    <h3>Reference:</h3>
+    <p>Cohen, S., Kamarck, T., & Mermelstein, R. (1983). A Global Measure of Perceived Stress. Journal of Health and Social Behavior, 24(4), 385–396. https://doi.org/10.2307/2136404</p>
+</body>
+</html>
+
+
