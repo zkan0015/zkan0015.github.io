@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mental Health Statistics</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <style>
+        .navbar {
+            background-color: lightblue;
+            color: white;
+            position: fixed;
+            height: fit-content;
+            top: 0;
+            right: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 2px;
+        }
+        .navbar li {
+      list-style-type: none;
+      margin: 0 5px;
+    }
+
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: blue;
+      color: gray;
+    }
+
+    /* Styles for the 'About mental health' link */
+    .navbar a[href="#services"] {
+      color: gray;
+    }
+
+
+        /* Add styles for improved layout and readability */
+        .head-container{
+            width: 1000px;
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 22px;
+        }
+        .container_middle {
+            width: 1400px; /* Set your desired width */
+            height: 600px; /* Set your desired height */
+            margin: 0 auto; /* Center the container horizontally */
+            background-color: #6D9DC5; /* Optional background color */
+            border-radius: 30px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center vertically */
+            padding: 10px; /* Add padding for spacing */
+            justify-content: space-around;
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.4);
+        }
+        .container_below {
+            width: 1400px; /* Set your desired width */
+            height: 600px; /* Set your desired height */
+            margin: 0 auto; /* Center the container horizontally */
+            background-color: #068D9D; /* Optional background color */
+            border-radius: 30px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center vertically */
+            padding: 10px; /* Add padding for spacing */
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.4);
+            justify-content: space-around;
+        }
+        .container {
+            flex: 1;
+            max-width: 700px;
+            border: 1px solid #efefef;
+            background-color: rgb(239, 237, 237);
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .spacer {
+            height: 30px;
+        }
+        .container h3{
+            font-size: 8px;
+        }
+        .container h2{
+            font-size: 12px;
+        }
+
+        /* Style for the Plotly chart */
+        .plotly-chart {
+            width: 80%;
+            max-width: 600px;
+            margin: 0;
+        }
+
+        .left-description {
+            flex: 2;
+            max-width: 400px;
+            background-color: whitesmoke;
+            padding: 20px;
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+             margin: 0 auto; /* Center the container horizontally */
+        }
+
+        .right-description {
+            flex: 2;
+            max-width: 400px;
+            background-color: lightcyan;
+            padding: 10px;
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+             margin: 0 auto; /* Center the container horizontally */
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="fixed-top header-transparent">
+    <div class="container d-flex align-items-center justify-content-between position-relative">
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/#about">About mental health</a></li>
+            <li><a class="nav-link scrollto" href="/#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="/#team">Team</a></li>
+      <!--    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>  -->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header>
+    <p class="spacer"> </p>
+    <p class="spacer"> </p>
+    <div class="head-container">
+        <h1>About Mental Health </h1>
+    </div>
+    <p class="spacer"> </p>
+    <div class="container_middle ">
+        <div class="container">
+            <h2>Proportion of people with <span style="color: red;">anxiety-related</span> conditions, 2014-2015 and 2017-2018</h2>
+            <div id="anxiety-plot" class="plotly-chart"></div>
+            <h3>Data source: <a href="https://www.abs.gov.au/statistics/health/mental-health/mental-health/2017-18" target="_blank">Australian Bureau of Statistics</a></h3>
+        </div>
+            <div class="left-description">
+                <h2>Anxiety Statistic</h2>
+                <p>In 2017-18, 3.2 million Australians (13.1%) had an anxiety-related condition. This was an increase from 2014-15 when 2.6 million people (or 11.2%) had such a condition. Females had an anxiety-related condition at one and a half times the rate of males (15.7% compared with 10.6%).</p>
+            </div>
+        </div>
+    </div>
+    <p class="spacer"> </p>
+    <div class="container_below">
+        <div class="right-description">
+            <h2>Depression Statistic </h2>
+                <p>Just over one in ten people (10.4%) had depression or feelings of depression in 2017-18, compared with 8.9% in 2014-15. While overall, females had depression or feelings of depression at a higher rate than males (11.6% compared with 9.1% respectively), the increase between 2014-15 and 2017-18 was especially evident amongst males aged 15-54 years.</p>
+            </div>
+        <div class="container">
+            <h2>Proportion of people with feelings of <span style="color: blue;">depression</span>, 2014-2015 and 2017-2018</h2>
+            <div id="depression-plot" class="plotly-chart"></div>
+            <h3>Data source: <a href="https://www.abs.gov.au/statistics/health/mental-health/mental-health/2017-18" target="_blank">Australian Bureau of Statistics</a></h3>
+        </div>
+    </div>
+    <p class="spacer"> </p>
+    <script>
+    fetch('/get_anxiety_data')
+    .then(response => response.json())
+    .then(data => {
+        Plotly.newPlot('anxiety-plot', data.data, data.layout);
+    });
+
+    fetch('/get_depression_data')
+    .then(response => response.json())
+    .then(data => {
+        Plotly.newPlot('depression-plot', data.data, data.layout);
+    });
+
+    </script>
+</body>
+</html>
