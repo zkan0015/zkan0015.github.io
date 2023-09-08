@@ -1,198 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSS Result</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2 !important;
-            text-align: center;
-            background-image: none !important;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 2rem;
+            /* text-align: center; */
         }
 
-        .result-container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            margin-right: 4rem;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            text-align: left;
+        .score {
+            text-align: center;
+            font-size: 37px;
+            margin-bottom: 20px;
+        }
+
+        .level {
+            text-align: center;
+            height: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .level div {
             height: 100%;
-        }
-
-        .result-title {
+            width: 100px;
+            /* Adjust the width as needed */
+            margin: 0 10px;
+            line-height: 20px;
             text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            background-color: rgb(238, 231, 231);
         }
 
-        .result-score {
-            text-align: center;
-            font-size: 48px;
-            color: #d00147;
+        .description {
+            display: flex;
         }
 
-        /* Add button style */
-        .form-button {
-            background-color: #d00147;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 10px 20px;
-            float: left;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .description .text {
+            width: 50%;
+            padding-right: 20px;
         }
 
-        .stress {
-            color: rgb(17, 16, 15);
-            font-size: large;
+        .description .image {
+            width: 50%;
         }
 
-        .form-button:hover {
-            background-color: #a40030;
+        .recommendation {
+            display: flex;
+            border-bottom: 1px solid #000;
+            padding-bottom: 100px;
+            margin-bottom: 100px;
         }
 
-        /* 新增样式，用于分隔框 */
-        .result-box {
-            background-color: yellowgreen;
-            border-radius: 10px;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            padding-bottom: 1rem;
-            padding-top: 1rem;
-            margin-left: 8rem;
-            margin-right: 8rem;
-            color: black;
-            /* margin-top: 1rem; */
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        .recommendation .text {
+            width: 50%;
+            padding-right: 20px;
         }
 
-
-        .result-section {
-            margin-bottom: 1rem;
+        .recommendation .image {
+            width: 50%;
+        }
+        .description .image img, .recommendation .image img {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
-    <!-- <header class="site-header">
-        <a href="{{ url_for('index') }}"><img src="static/images/icon.jpg" alt="logo" class="logo"></a>
-        <nav class="navigation">
-            <ul>
-                <li class="home-button"><a href="{{ url_for('index') }}"><button class="home-button">Home</button></a></li>
-                <li class="assessment-button"><a href="/calculator"><button class="assessment-button">Assessment</button></a></li>
-                <li class="learnmore-button"><a href="/data"><button class="learnmore-button">Learn more</button></a></li>
-                <li class="about-button"><a href="{{ url_for('about') }}"><button class="about-button">About</button></a></li>
-
-            </ul>
-        </nav>
-    </header> -->
-    <div class="result-container">
-        <hr>
-        <h2 class="result-title">Your PSS Result:</h2>
-        <div class="result-score">Total Score: {{ total_score }}</div>
-
-        <!-- 分隔框，用于包裹不同的部分 -->
-
-        {% if total_score <= 18 %} <div class="result-box">
-            <div class="result-section">
-                <p id="part1" class="stress">
-                    Stress Level: Low
-                </p>
-                <p>
-                    Low
-                </p>
-                <p>
-                    This indicates that even if you've been experiencing occasional stress recently, it's probable that
-                    your feelings are within the realm of normal responses to whatever circumstances you're facing.
-                </p>
-            </div>
+    <h1 style="text-align:center">Your PSS Result:</h1>
+    <div class="score" id="score">Total Score: {{ total_score }}</div>
+    <div class="score1" id="score1" style="display:none"> {{ total_score }}</div>
+    <div class="level">
+        <div class="low" id="low">Low</div>
+        <div class="moderate" id="moderate">Moderate</div>
+        <div class="high" id="high">High</div>
     </div>
-    {% endif %}
-
-
-    {% if total_score> 18 and total_score <= 36 %} <div class="result-box">
-        <div class="result-section">
-            <p id="part2" class="stress">
-                Stress Level: Moderate
+    <p><em>Please note this is NOT a medical advice. It's important to consult with a qualified
+                    healthcare professional
+                    for professional advice and personalized guidance.</em></p>
+    <!-- <div class="description">
+        <p>This indicates that even if you've been experiencing occasional stress recently, it's probable that your feelings are within the realm of normal responses to whatever circumstances you're facing.</p>
+    </div> -->
+    <hr>
+    <div class="description">
+        <div class="image">
+            <!-- Insert your image here -->
+            <img src="/static/img/pressure2.jpeg" alt="Your Image">
+        </div>
+        <div id="low1" style="display:none" class="text">
+            This indicates that even if you've been experiencing occasional stress recently, it's probable that
+            your feelings are within the realm of normal responses to whatever circumstances you're facing.
+        </div>
+        <div id="moderate1" style="display:none" class="text">
+            A moderate stress level typically indicates that you are experiencing a moderate amount of stress in
+            your life. This level of stress may be manageable for some people, but it can still have an impact
+            on
+            their overall well-being. It is important for you with a moderate stress level to practice
+            self-care,
+            engage in stress-reducing activities, and seek support if needed to prevent it from escalating to
+            higher
+            levels. Managing stress through healthy coping mechanisms can help maintain a balanced and healthy
+            lifestyle.
+        </div>
+        <div id="high1" style="display:none" class="text">
+            A high stress level might indicate that you're experiencing a significant degree of
+            psychological and
+            emotional strain. This could manifest as heightened anxiety, restlessness, and difficulty in
+            managing daily
+            tasks. It's important for you at this stress level to prioritize self-care, relaxation
+            techniques, and seeking
+            support from friends, family, or professionals can also be beneficial in navigating through this
+            challenging
+            period and promoting overall well-being.
+        </div>
+    </div>
+    <hr>
+    <div class="recommendation">
+        <div class="text">
+            <p>
+                If you prefer online programs, we highly recommend THIS WAY UP, a trusted Australian provider of
+                evidence-based,
+                internet-delivered Cognitive Behavioural Therapy (iCBT) programs.
             </p>
             <p>
-                A moderate stress level typically indicates that you are experiencing a moderate amount of stress in
-                your life. This level of stress may be manageable for some people, but it can still have an impact
-                on
-                their overall well-being. It is important for you with a moderate stress level to practice
-                self-care,
-                engage in stress-reducing activities, and seek support if needed to prevent it from escalating to
-                higher
-                levels. Managing stress through healthy coping mechanisms can help maintain a balanced and healthy
-                lifestyle.
+                THIS WAY UP is funded by the Australian Government Department of Health and Aged Care under the
+                Telephone
+                Counselling, Self Help and Web-Based Support Programs. For more information, please visit
+                <a href="https://thiswayup.org.au/">HERE</a>
             </p>
+      <!--      <p><em>Please note this is NOT a medical advice. It's important to consult with a qualified
+                    healthcare professional
+                    for professional advice and personalized guidance.</em></p>  -->
         </div>
+        <div class="image">
+            <!-- Insert your image here -->
+            <img src="/static/img/pressure1.png" alt="Your Image" >
         </div>
-        {% endif %}
-
-
-
-        {% if total_score > 36 %}
-        <div class="result-box">
-            <div class="result-section">
-                <p id="part3" class="stress">
-                    Stress Level: High
-                </p>
-                <p>
-                    A high stress level might indicate that you're experiencing a significant degree of
-                    psychological and
-                    emotional strain. This could manifest as heightened anxiety, restlessness, and difficulty in
-                    managing daily
-                    tasks. It's important for you at this stress level to prioritize self-care, relaxation
-                    techniques, and seeking
-                    support from friends, family, or professionals can also be beneficial in navigating through this
-                    challenging
-                    period and promoting overall well-being.
-                </p>
-            </div>
-        </div>
-        {% endif %}
-
-        <br>
-        <div class="result-box">
-            <div class="result-section">
-                <p>
-                    If you prefer online programs, we highly recommend THIS WAY UP, a trusted Australian provider of
-                    evidence-based,
-                    internet-delivered Cognitive Behavioural Therapy (iCBT) programs.
-                </p>
-                <p>
-                    THIS WAY UP is funded by the Australian Government Department of Health and Aged Care under the
-                    Telephone
-                    Counselling, Self Help and Web-Based Support Programs. For more information, please visit
-                    <a href="https://thiswayup.org.au/">HERE</a>
-                </p>
-                <p><em>Please note this is NOT a medical advice. It's important to consult with a qualified
-                        healthcare professional
-                        for professional advice and personalized guidance.</em></p>
-            </div>
-        </div>
-        </div>
-
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
+    </div>
 </body>
 
 </html>

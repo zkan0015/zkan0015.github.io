@@ -4,12 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d83f846-3718-4a28-b8e9-3e72be907580" name="Changes" comment="change title color">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="2d83f846-3718-4a28-b8e9-3e72be907580" name="Changes" comment="creat new git">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/Icemountain.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/Mountain.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/Why-Assessing-Your-Mental-Health-Is-So-Important-scaled.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/assessment.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/busy life.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/icon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/stress.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/moveBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/showTip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/templet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/datapage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/result_for_stress_calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/result_for_stress_calculator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stress_calculator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stress_calculator_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stress_calculator_new.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,21 +63,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/FIT5120-IE-project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/zkan0015.github.io",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\FIT5120-IE-project\static\images" />
@@ -69,26 +87,22 @@
       <recent name="D:\FIT5120-IE-project\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.Main project">
+  <component name="RunManager" selected="Flask server.Flask (app.py) (1)">
     <configuration name="datapage.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/FIT5120-IE-project/templates/datapage.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="result_for_stress_calculator.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/FIT5120-IE-project/templates/result_for_stress_calculator.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="stress_calculator_new.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/FIT5120-IE-project/templates/stress_calculator_new.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Main project" />
+    <configuration name="zkan0015.github.io" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="zkan0015.github.io" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.10" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -100,6 +114,21 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Flask (app.py) (1)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
+      <module name="zkan0015.github.io" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Flask (app.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
@@ -134,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Flask server.Flask (app.py) (1)" />
+        <item itemvalue="Python.zkan0015.github.io" />
         <item itemvalue="Flask server.Flask (app.py)" />
         <item itemvalue="JavaScript Debug.datapage.html" />
         <item itemvalue="JavaScript Debug.result_for_stress_calculator.html" />
-        <item itemvalue="JavaScript Debug.stress_calculator_new.html" />
-        <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
   </component>
@@ -174,6 +203,8 @@
       <workItem from="1693658235221" duration="1231000" />
       <workItem from="1693723116648" duration="1253000" />
       <workItem from="1693805761290" duration="53000" />
+      <workItem from="1693887863746" duration="10000" />
+      <workItem from="1694148139879" duration="51000" />
     </task>
     <task id="LOCAL-00001" summary="add templet to the project">
       <option name="closed" value="true" />
@@ -263,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693659454969</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="creat new git">
+      <option name="closed" value="true" />
+      <created>1693806044604</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693806044604</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,10 +330,12 @@
     <MESSAGE value="fix ui problem" />
     <MESSAGE value="edit datapage.html" />
     <MESSAGE value="change title color" />
-    <option name="LAST_COMMIT_MESSAGE" value="change title color" />
+    <MESSAGE value="creat new git" />
+    <option name="LAST_COMMIT_MESSAGE" value="creat new git" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FIT5120_IE_project$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1693723686440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/zkan0015_github_io$zkan0015_github_io.coverage" NAME="zkan0015.github.io Coverage Results" MODIFIED="1694148147083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/FIT5120_IE_project$app.coverage" NAME="app Coverage Results" MODIFIED="1693628876957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

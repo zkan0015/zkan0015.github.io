@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 import plotly.graph_objects as go
 import plotly, json
 import numpy as np
@@ -13,6 +13,18 @@ import configparser
 
 
 app = Flask(__name__)
+
+# Set log_in name and password
+#LOGIN_NAME = "TA22"
+#PASSWORD = "TA@22"
+
+#@app.before_request
+#def require_basic_auth():
+#    auth = request.authorization
+#    if not auth or auth.username != LOGIN_NAME or auth.password != PASSWORD:
+#        return Response(
+#            "Unauthorized - Invalid login name or password", 401,
+#            {'WWW-Authenticate': 'Basic realm="Login Required"'}        )
 
 questions = [
     "In the last month, how often have you been upset because of something that happened unexpectedly?",
@@ -81,7 +93,7 @@ def landing():
     graphJSON_anxiety = json.dumps(fig_anxiety, cls=plotly.utils.PlotlyJSONEncoder)
     graphJSON_depression = json.dumps(fig_depression, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('datapage.html', graphJSON_anxiety=graphJSON_anxiety, graphJSON_depression=graphJSON_depression)
+    return render_template('learnmore.html', graphJSON_anxiety=graphJSON_anxiety, graphJSON_depression=graphJSON_depression)
 
 @app.route('/get_anxiety_data', methods=['GET'])
 def get_anxiety_data_json():
@@ -122,13 +134,15 @@ def get_anxiety_data_json():
     ])
 
     fig_anxiety.update_layout(
-        width=600,  # Set the width
-        height=600,  # Set the height
+        width=650,  # Set the width
+        height=450,  # Set the height
         paper_bgcolor='rgba(0,0,0,0)',  # Set a clear background
         plot_bgcolor='rgba(0,0,0,0)',  # Set a clear background
         modebar=dict(orientation='v', bgcolor='rgba(0,0,0,0)'),  # Remove toolbar
         modebar_remove=['pan2d', 'lasso2d', 'select2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d',
-                        'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines']
+                        'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
+        margin=dict(l=0, r=0, t=0, b=0),
+        legend=dict(font=dict(size=8))
     )
     return json.dumps(fig_anxiety, cls=plotly.utils.PlotlyJSONEncoder)
 
@@ -172,54 +186,17 @@ def get_depression_data_json():
     ])
 
     fig_depression.update_layout(
-        width=600,  # Set the width
-        height=600,  # Set the height
+        width=650,  # Set the width
+        height=450,  # Set the height
         paper_bgcolor='rgba(0,0,0,0)',  # Set a clear background
         plot_bgcolor='rgba(0,0,0,0)',  # Set a clear background
         modebar=dict(orientation='v', bgcolor='rgba(0,0,0,0)'),  # Remove toolbar
         modebar_remove=['pan2d', 'lasso2d', 'select2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d',
-                        'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines']
+                        'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
+        margin=dict(l=0, r=0, t=0, b=0),
+        legend=dict(font=dict(size=8))
     )
     return json.dumps(fig_depression, cls=plotly.utils.PlotlyJSONEncoder)
-
-
-@app.route('/get_mental_health_stats', methods=['GET'])
-def get_mental_health_stats():
-    # Static data for the gauge charts
-    anxiety_2017_18 = 13.3
-    anxiety_2014_15 = 11.1
-    depression_2017_18 = 10.4
-
-    # Create gauge charts
-    gauge1 = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=anxiety_2017_18,
-        title={'text': "Anxiety 2017-18"},
-        gauge={'axis': {'range': [None, 100]}}
-    ))
-
-    gauge2 = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=anxiety_2014_15,
-        title={'text': "Anxiety 2014-15"},
-        gauge={'axis': {'range': [None, 100]}}
-    ))
-
-    gauge3 = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=depression_2017_18,
-        title={'text': "Depression 2017-18"},
-        gauge={'axis': {'range': [None, 100]}}
-    ))
-
-    # Combine all gauges into a single JSON object
-    all_gauges = {
-        'gauge1': json.loads(json.dumps(gauge1, cls=plotly.utils.PlotlyJSONEncoder)),
-        'gauge2': json.loads(json.dumps(gauge2, cls=plotly.utils.PlotlyJSONEncoder)),
-        'gauge3': json.loads(json.dumps(gauge3, cls=plotly.utils.PlotlyJSONEncoder))
-    }
-
-    return jsonify(all_gauges)
 
 @app.route('/')
 def index():
@@ -229,9 +206,9 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/data')
+@app.route('/learnmore')
 def data():
-    return render_template('datapage.html')
+    return render_template('learnmore.html')
 @app.route('/calculator', methods=['GET', 'POST'])
 def calculator():
     app._static_folder = "./static"
@@ -252,6 +229,6 @@ def calculator():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port = 80, debug =True)
+    app.run(host="0.0.0.0", port = 70, debug =True)
 
 
